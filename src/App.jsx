@@ -1,33 +1,54 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { useRef } from 'react';
 import './App.css'
+import first from './assets/avant-garde-1.jpg'
+import second from './assets/avant-garde-2.jpg'
+
+import { Parallax, ParallaxLayer } from '@react-spring/parallax'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const ref = useRef();
 
   return (
     <>
       <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+        <Parallax pages={4}>
+
+        <ParallaxLayer
+          offset={0}
+          speed={1}
+          factor={2}
+          style={{
+            backgroundImage: `url(${first})`,
+            backgroundSize: 'cover',
+          }}
+        />
+
+        <ParallaxLayer
+          offset={2}
+          speed={1}
+          factor={4}
+          style={{
+            backgroundImage: `url(${second})`,
+            backgroundSize: 'cover',
+          }}
+        ></ParallaxLayer>
+
+          <ParallaxLayer 
+            offset={0.2}
+            speed={0.5}
+          >
+            <h1>Hello World!</h1>
+          </ParallaxLayer>
+
+          <ParallaxLayer 
+            offset={3.2} 
+            speed={2}
+          >
+            <h1>That would be fun</h1>
+          </ParallaxLayer>
+
+        </Parallax>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
   )
 }
