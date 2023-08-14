@@ -1,34 +1,37 @@
-import { useState } from 'react'
+import { useRef } from 'react';
 import './App.css'
+import first from './assets/avant-garde-1.jpg'
+import second from './assets/avant-garde-2.jpg'
+
 import { Parallax, ParallaxLayer } from '@react-spring/parallax'
-import avant-garde-1 from './avant-garde-1.jpg';
-import avant-garde-2 from './avant-garde-2.jpg';
 
 function App() {
+  const ref = useRef();
+
   return (
     <>
       <div>
         <Parallax pages={4}>
 
-          <ParallaxLayer 
-            offset={0}
-            speed={1}
-            factor={2}
-            style={{
-              backgroundImage: `url (${avant-garde-1})`,
-              backgroundSize: 'cover',
-            }}
-          />
+        <ParallaxLayer
+          offset={0}
+          speed={1}
+          factor={2}
+          style={{
+            backgroundImage: `url(${first})`,
+            backgroundSize: 'cover',
+          }}
+        />
 
-          <ParallaxLayer 
-            offset={2}
-            speed={1}
-            factor={4}
-            style={{
-              backgroundImage: `url (${avant-garde-2})`,
-              backgroundSize: 'cover',
-            }}
-          />
+        <ParallaxLayer
+          offset={2}
+          speed={1}
+          factor={4}
+          style={{
+            backgroundImage: `url(${second})`,
+            backgroundSize: 'cover',
+          }}
+        ></ParallaxLayer>
 
           <ParallaxLayer 
             offset={0.2}
